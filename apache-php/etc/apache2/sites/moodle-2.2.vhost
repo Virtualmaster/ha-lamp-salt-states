@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+	ServerName {{ host_name }}
+
+	DocumentRoot /srv/app/{{ app_env }}/sites/{{ app_name }}/root
+
+	ErrorLog /var/log/apache2/{{ app_env }}_{{ app_name }}.error.log
+	LogLevel warn
+	CustomLog /var/log/apache2/{{ app_env }}_{{ app_name }}.access.log combined
+
+	RewriteEngine On
+	RewriteOptions inherit
+
+	<Directory /srv/app/{{ app_env }}/sites/{{ app_name }}/root>
+		Options -Indexes FollowSymLinks
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+</VirtualHost>
