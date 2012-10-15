@@ -1,0 +1,2 @@
+ha-lamp-salt-states
+===================
